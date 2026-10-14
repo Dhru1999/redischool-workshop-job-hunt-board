@@ -1,42 +1,43 @@
 # App brief
 
-When forking this repository for a specific app idea, replace the placeholders below before asking the agent to build it. Keep the scope small enough for a two-hour workshop. Unfilled placeholders are not requirements; the agent should ask about missing details needed for implementation.
+This brief describes the first version of the app. Change it when your team decides something new; the agent follows it. Unfilled points are not requirements; the agent should ask about missing details needed for implementation.
 
 ## App name
 
-[Name of your app]
+Job Hunt Board
 
 ## User and problem
 
-- Who will use it? [Target user]
-- What problem does it solve? [Problem or need]
+- Who will use it? Someone looking for a job in tech.
+- What problem does it solve? Many applications at different stages are hard to keep track of.
 
 ## Main user journey
 
-[Describe one complete journey: the user starts by ..., does ..., and finishes with ...]
+The user adds an application card with company and role, moves it through the columns Wishlist, Applied, Interview and Offer, and deletes it when it is no longer relevant.
 
 ## Must-have features
 
-List at most three features needed for the main journey.
-
-1. [Feature]
-2. [Feature, if needed]
-3. [Feature, if needed]
+1. Add a card with company and role. New cards start in Wishlist.
+2. Move a card to the next or previous column.
+3. Delete a card.
 
 ## Demo acceptance criteria
 
-Describe observable results that show the app works. Use these to check the final demo.
-
-- [Given a starting state, when the user performs an action, then an expected result appears.]
-- [Another observable result, if needed.]
+- Given the empty board, when the user adds "Example GmbH – Junior Developer", then the card appears in Wishlist.
+- Given a card in Applied, when the user moves it forward, then it appears in Interview and no longer in Applied.
+- Given several cards, when the user deletes one, then only that card disappears.
 
 ## Sample data
 
-[Describe the fictional data needed for the demo, or write "None". Do not include real personal data or credentials.]
+Fictional companies and roles only, for example "Example GmbH – Junior Developer".
 
 ## Out of scope
 
-[Features deliberately postponed beyond this workshop.]
+- Keeping cards after a page reload
+- Drag and drop
+- Notes and dates per card
+- Search and filter
+- Level-ups from README.md, until the team adds them to this brief
 
 ## Explicit overrides
 
@@ -46,4 +47,4 @@ When an override is requested, replace "None" with the specific participant deci
 
 ## Project decisions
 
-[Record other persistent decisions made by the participant as the app develops, or write "None yet".]
+None yet.
