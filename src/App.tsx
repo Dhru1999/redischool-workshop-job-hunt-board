@@ -1,35 +1,26 @@
-import { useState, type FormEvent } from 'react'
-import { COLUMNS, type Card, type ColumnName } from './board.ts'
+import { useEffect, useState } from 'react'
+import { COLUMNS, loadCards, saveCards, type Card, type ColumnName } from './board.ts'
+import AddForm from './AddForm.tsx'
 import SearchableBoard from './SearchableBoard.tsx'
 
 export default function App() {
-  const [cards, setCards] = useState<Card[]>([])
-  const [company, setCompany] = useState('')
-  const [role, setRole] = useState('')
-  const [nextId, setNextId] = useState(1)
-  const [error, setError] = useState('')
+  const [cards, setCards] = useState<Card[]>(loadCards)
 
-  function handleAdd(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const trimmedCompany = company.trim()
-    const trimmedRole = role.trim()
-    if (!trimmedCompany || !trimmedRole) {
-      setError('Please enter both a company and a role.')
-      return
-    }
-    setCards([
-      ...cards,
-      { id: nextId, company: trimmedCompany, role: trimmedRole, column: 'Wishlist' },
-    ])
-    setNextId(nextId + 1)
-    setCompany('')
-    setRole('')
-    setError('')
+  // Save to this browser whenever the cards change, so they survive a reload.
+  useEffect(() => {
+    saveCards(cards)
+  }, [cards])
+
+  function addCard(company: string, role: string) {
+    setCards((current) => {
+      const nextId = Math.max(0, ...current.map((card) => card.id)) + 1
+      return [...current, { id: nextId, company, role, column: 'Wishlist', note: '', date: '' }]
+    })
   }
 
   function moveCard(id: number, step: -1 | 1) {
-    setCards(
-      cards.map((card) => {
+    setCards((current) =>
+      current.map((card) => {
         if (card.id !== id) return card
         const newIndex = COLUMNS.indexOf(card.column) + step
         if (newIndex < 0 || newIndex >= COLUMNS.length) return card
@@ -39,41 +30,28 @@ export default function App() {
   }
 
   function dropCard(id: number, column: ColumnName) {
-    setCards(cards.map((card) => (card.id === id ? { ...card, column } : card)))
+    updateCard(id, { column })
+  }
+
+  function updateCard(id: number, changes: Partial<Card>) {
+    setCards((current) => current.map((card) => (card.id === id ? { ...card, ...changes } : card)))
   }
 
   function deleteCard(id: number) {
-    setCards(cards.filter((card) => card.id !== id))
+    setCards((current) => current.filter((card) => card.id !== id))
   }
 
   return (
     <main>
       <h1>Job Hunt Board</h1>
-      <form className="add-form" onSubmit={handleAdd} noValidate>
-        <label>
-          Company
-          <input
-            value={company}
-            onChange={(event) => setCompany(event.target.value)}
-            placeholder="Example GmbH"
-          />
-        </label>
-        <label>
-          Role
-          <input
-            value={role}
-            onChange={(event) => setRole(event.target.value)}
-            placeholder="Junior Developer"
-          />
-        </label>
-        <button type="submit">Add to Wishlist</button>
-      </form>
-      {error && (
-        <p className="error" role="alert">
-          {error}
-        </p>
-      )}
-      <SearchableBoard cards={cards} onMove={moveCard} onDrop={dropCard} onDelete={deleteCard} />
+      <AddForm onAdd={addCard} />
+      <SearchableBoard
+        cards={cards}
+        onMove={moveCard}
+        onDrop={dropCard}
+        onUpdate={updateCard}
+        onDelete={deleteCard}
+      />
     </main>
   )
 }

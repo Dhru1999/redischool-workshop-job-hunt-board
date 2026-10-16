@@ -39,15 +39,14 @@ Fictional companies and roles only, for example "Example GmbH – Junior Develop
 
 ## Out of scope
 
-- Keeping cards after a page reload
-- Notes and dates per card
 - Level-ups from README.md, until the team adds them to this brief
 
 ## Explicit overrides
 
-The participant requested search and filtering, bringing these features into scope.
-
+- Search and filter (requested by the participant): search by company or role and filter by stage; see must-have feature 4.
 - Drag and drop (requested by the participant): cards can be dragged to any column. The Back and Forward buttons stay for keyboard and touch users.
+- Keep cards after a page reload (requested by the participant): cards are saved in this browser's local storage only, not shared with other devices.
+- Notes and dates per card (requested by the participant): each card has an optional date (for example the interview date) and a free-text note, editable on the card.
 
 When an override is requested, replace "None" with the specific participant decision and its scope. Only record decisions actually requested or approved by the participant; the agent must not propose alternative stacks or excluded features proactively.
 

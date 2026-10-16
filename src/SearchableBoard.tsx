@@ -6,10 +6,11 @@ type BoardProps = {
   cards: Card[]
   onMove: (id: number, step: -1 | 1) => void
   onDrop: (id: number, column: ColumnName) => void
+  onUpdate: (id: number, changes: Partial<Card>) => void
   onDelete: (id: number) => void
 }
 
-export default function SearchableBoard({ cards, onMove, onDrop, onDelete }: BoardProps) {
+export default function SearchableBoard({ cards, onMove, onDrop, onUpdate, onDelete }: BoardProps) {
   const [search, setSearch] = useState('')
   const [stage, setStage] = useState('All')
   const query = search.trim().toLowerCase()
@@ -47,7 +48,7 @@ export default function SearchableBoard({ cards, onMove, onDrop, onDelete }: Boa
         {COLUMNS.filter((name) => stage === 'All' || name === stage).map((name) => (
           <Column key={name} name={name}
             cards={visibleCards.filter((card) => card.column === name)}
-            onMove={onMove} onDrop={onDrop} onDelete={onDelete} />
+            onMove={onMove} onDrop={onDrop} onUpdate={onUpdate} onDelete={onDelete} />
         ))}
       </div>
     </>

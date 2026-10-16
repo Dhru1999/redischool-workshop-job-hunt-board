@@ -83,8 +83,24 @@ button {
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.15);
 }
 
-.card p {
+.card-title {
   margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.card-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.card-field input,
+.card-field textarea {
+  font: inherit;
+  padding: 0.25rem 0.4rem;
+  resize: vertical;
 }
 
 .card-actions {
