@@ -46,6 +46,7 @@ Fictional companies and roles only, for example "Example GmbH – Junior Develop
 ## Explicit overrides
 
 The participant requested search and filtering, bringing these features into scope.
+
 - Drag and drop (requested by the participant): cards can be dragged to any column. The Back and Forward buttons stay for keyboard and touch users.
 
 When an override is requested, replace "None" with the specific participant decision and its scope. Only record decisions actually requested or approved by the participant; the agent must not propose alternative stacks or excluded features proactively.
