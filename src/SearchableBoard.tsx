@@ -14,10 +14,10 @@ export default function SearchableBoard({ cards, onMove, onDrop, onUpdate, onDel
   const [search, setSearch] = useState('')
   const [stage, setStage] = useState('All')
   const query = search.trim().toLowerCase()
-  const visibleCards = cards.filter((card) =>
-    (stage === 'All' || card.column === stage) &&
-    `${card.company} ${card.role}`.toLowerCase().includes(query),
-  )
+  const visibleCards = cards.filter((card) => stage === 'All' || card.column === stage)
+  const matchingIds = visibleCards.filter((card) =>
+    query && `${card.company} ${card.role}`.toLowerCase().includes(query),
+  ).map((card) => card.id)
 
   return (
     <>
@@ -42,11 +42,12 @@ export default function SearchableBoard({ cards, onMove, onDrop, onUpdate, onDel
       </div>
       <p role="status">
         Showing {visibleCards.length} of {cards.length} applications.
-        {cards.length > 0 && visibleCards.length === 0 && ' No matching applications. Try clearing the filters.'}
+        {query && ` ${matchingIds.length} search matches highlighted. Other cards remain visible.`}
       </p>
       <div className="board">
         {COLUMNS.filter((name) => stage === 'All' || name === stage).map((name) => (
           <Column key={name} name={name}
+            matchingIds={matchingIds}
             cards={visibleCards.filter((card) => card.column === name)}
             onMove={onMove} onDrop={onDrop} onUpdate={onUpdate} onDelete={onDelete} />
         ))}

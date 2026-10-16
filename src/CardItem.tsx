@@ -2,6 +2,7 @@ import type { Card } from './board.ts'
 
 type CardItemProps = {
   card: Card
+  isMatch: boolean
   isFirst: boolean
   isLast: boolean
   onMove: (id: number, step: -1 | 1) => void
@@ -9,16 +10,17 @@ type CardItemProps = {
   onDelete: (id: number) => void
 }
 
-export default function CardItem({ card, isFirst, isLast, onMove, onUpdate, onDelete }: CardItemProps) {
+export default function CardItem({ card, isMatch, isFirst, isLast, onMove, onUpdate, onDelete }: CardItemProps) {
   const label = `${card.company} – ${card.role}`
 
   return (
     <li
-      className="card"
+      className={isMatch ? 'card search-match' : 'card'}
       draggable
       onDragStart={(event) => event.dataTransfer.setData('text/plain', String(card.id))}
     >
       <p className="card-title">{label}</p>
+      {isMatch && <p className="match-label">Search match</p>}
       <label className="card-field">
         Date
         <input

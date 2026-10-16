@@ -9,6 +9,8 @@ One line per loop: what you asked the agent, what happened, and what you changed
 
 | 3 | Hilfe beim Merge-Konflikt | Suche/Filter und Drag-and-drop zusammengeführt; Lint und Build erfolgreich. | Konflikte in App und Brief gelöst und Drag-and-drop mit dem gefilterten Board verbunden. |
 
+| 4 | Suche soll andere Karten sichtbar lassen | Suche hebt Treffer hervor und zeigt ihre Anzahl, ohne andere Karten auszublenden. | Alle Karten bleiben bei der Suche in ihren Spalten; der Stage-Filter bleibt separat nutzbar. |
+
 ## For the Presentation
 
 Each group has about five minutes. Use the log to answer:

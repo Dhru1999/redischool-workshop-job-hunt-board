@@ -88,6 +88,17 @@ button {
   font-weight: 600;
 }
 
+.search-match {
+  outline: 3px solid #916400;
+  background: #fff4cc;
+}
+
+.match-label {
+  color: #654500;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
 .card-field {
   display: flex;
   flex-direction: column;

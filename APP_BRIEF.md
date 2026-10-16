@@ -54,3 +54,4 @@ When an override is requested, replace "None" with the specific participant deci
 
 - Write one line per work loop in `LOOP_LOG.md`, recording the prompt, what happened, and what changed afterwards.
 - Search ignores letter case and surrounding spaces; the stage filter defaults to all stages.
+- Search highlights matching companies or roles and shows the match count without hiding other cards; the stage dropdown still filters columns.

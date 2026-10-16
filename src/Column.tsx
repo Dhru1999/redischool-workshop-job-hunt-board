@@ -5,13 +5,14 @@ import CardItem from './CardItem.tsx'
 type ColumnProps = {
   name: ColumnName
   cards: Card[]
+  matchingIds: number[]
   onMove: (id: number, step: -1 | 1) => void
   onDrop: (id: number, column: ColumnName) => void
   onUpdate: (id: number, changes: Partial<Card>) => void
   onDelete: (id: number) => void
 }
 
-export default function Column({ name, cards, onMove, onDrop, onUpdate, onDelete }: ColumnProps) {
+export default function Column({ name, cards, matchingIds, onMove, onDrop, onUpdate, onDelete }: ColumnProps) {
   const [isOver, setIsOver] = useState(false)
   const index = COLUMNS.indexOf(name)
 
@@ -42,6 +43,7 @@ export default function Column({ name, cards, onMove, onDrop, onUpdate, onDelete
           <CardItem
             key={card.id}
             card={card}
+            isMatch={matchingIds.includes(card.id)}
             isFirst={index === 0}
             isLast={index === COLUMNS.length - 1}
             onMove={onMove}
