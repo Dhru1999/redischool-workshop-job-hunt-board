@@ -50,3 +50,8 @@ These scope limits do not excuse skipping basic input validation, accessible lab
 - Verify meaningful behavior. Run `npm run lint` and `npm run build` after code changes and before declaring implementation complete. Report failures or checks you could not run.
 - Explain changes and commands in language accessible to beginners, including how the participant can try the result.
 - Do not introduce excluded features as best practices or propose them as next steps.
+
+## House rules
+
+1. Explain every change in at most three sentences.
+2. Keep every component file under 100 lines.
