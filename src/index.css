@@ -88,6 +88,16 @@ button {
   font-weight: 600;
 }
 
+.stage-interview {
+  background: #fff9c4;
+  border-left: 5px solid #e0b800;
+}
+
+.stage-offer {
+  background: #dcf5dc;
+  border-left: 5px solid #2e8b3a;
+}
+
 .search-match {
   outline: 3px solid #916400;
   background: #fff4cc;

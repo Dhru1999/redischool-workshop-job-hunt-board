@@ -15,7 +15,7 @@ export default function CardItem({ card, isMatch, isFirst, isLast, onMove, onUpd
 
   return (
     <li
-      className={isMatch ? 'card search-match' : 'card'}
+      className={`card stage-${card.column.toLowerCase()}${isMatch ? ' search-match' : ''}`}
       draggable
       onDragStart={(event) => event.dataTransfer.setData('text/plain', String(card.id))}
     >
