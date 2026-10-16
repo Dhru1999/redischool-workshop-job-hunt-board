@@ -21,6 +21,11 @@ The user adds an application card with company and role, moves it through the co
 2. Move a card to the next or previous column.
 3. Delete a card.
 
+## Additional rules
+
+- Explain every change in at most three sentences.
+- Keep every component file under 100 lines.
+
 ## Demo acceptance criteria
 
 - Given the empty board, when the user adds "Example GmbH – Junior Developer", then the card appears in Wishlist.
