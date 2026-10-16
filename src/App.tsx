@@ -1,12 +1,19 @@
 import { useState } from 'react'
+import AddCardForm from './AddCardForm'
 import { COLUMNS, type JobCard } from './board'
 
 export default function App() {
-  const [cards] = useState<JobCard[]>([])
+  const [cards, setCards] = useState<JobCard[]>([])
+
+  function addCard(company: string, role: string) {
+    const newCard: JobCard = { id: crypto.randomUUID(), company, role, column: 'Wishlist' }
+    setCards([...cards, newCard])
+  }
 
   return (
     <main>
       <h1>Job Hunt Board</h1>
+      <AddCardForm onAdd={addCard} />
       <div className="board">
         {COLUMNS.map((column) => {
           const cardsInColumn = cards.filter((card) => card.column === column)
