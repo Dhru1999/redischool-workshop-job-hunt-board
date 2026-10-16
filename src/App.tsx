@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { COLUMNS, type Card } from './board.ts'
+import { COLUMNS, type Card, type ColumnName } from './board.ts'
 import Column from './Column.tsx'
 
 export default function App() {
@@ -36,6 +36,10 @@ export default function App() {
         return { ...card, column: COLUMNS[newIndex] }
       }),
     )
+  }
+
+  function dropCard(id: number, column: ColumnName) {
+    setCards(cards.map((card) => (card.id === id ? { ...card, column } : card)))
   }
 
   function deleteCard(id: number) {
@@ -76,6 +80,7 @@ export default function App() {
             name={name}
             cards={cards.filter((card) => card.column === name)}
             onMove={moveCard}
+            onDrop={dropCard}
             onDelete={deleteCard}
           />
         ))}
