@@ -1,4 +1,87 @@
 body {
   margin: 2rem;
   font-family: system-ui, sans-serif;
+  background: #f4f5f7;
+  color: #222;
+}
+
+.add-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.add-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-weight: 600;
+}
+
+input,
+button {
+  font: inherit;
+  padding: 0.4rem 0.6rem;
+}
+
+.error {
+  color: #b00020;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.column {
+  background: #e3e6eb;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.column h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.count,
+.empty {
+  color: #555;
+  font-weight: normal;
+}
+
+.card {
+  background: white;
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.15);
+}
+
+.card p {
+  margin: 0 0 0.5rem;
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.card-actions button {
+  font-size: 0.85rem;
+  padding: 0.2rem 0.4rem;
+}
+
+.delete {
+  color: #b00020;
 }
