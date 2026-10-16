@@ -5,14 +5,20 @@ body {
   color: #222;
 }
 
-.add-form {
+.add-form,
+.board-filters {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   align-items: flex-end;
 }
 
-.add-form label {
+.board-filters {
+  margin-top: 1.5rem;
+}
+
+.add-form label,
+.board-filters label {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -20,6 +26,7 @@ body {
 }
 
 input,
+select,
 button {
   font: inherit;
   padding: 0.4rem 0.6rem;

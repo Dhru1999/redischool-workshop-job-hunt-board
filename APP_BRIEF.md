@@ -20,6 +20,7 @@ The user adds an application card with company and role, moves it through the co
 1. Add a card with company and role. New cards start in Wishlist.
 2. Move a card to the next or previous column.
 3. Delete a card.
+4. Search applications by company or role and filter by stage; combine both controls and clear them.
 
 ## Additional rules
 
@@ -41,15 +42,15 @@ Fictional companies and roles only, for example "Example GmbH – Junior Develop
 - Keeping cards after a page reload
 - Drag and drop
 - Notes and dates per card
-- Search and filter
 - Level-ups from README.md, until the team adds them to this brief
 
 ## Explicit overrides
 
-None. Use the defaults in `AGENTS.md` unless the participant explicitly requests an override.
+The participant requested search and filtering, bringing these features into scope.
 
 When an override is requested, replace "None" with the specific participant decision and its scope. Only record decisions actually requested or approved by the participant; the agent must not propose alternative stacks or excluded features proactively.
 
 ## Project decisions
 
-None yet.
+- Write one line per work loop in `LOOP_LOG.md`, recording the prompt, what happened, and what changed afterwards.
+- Search ignores letter case and surrounding spaces; the stage filter defaults to all stages.

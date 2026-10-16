@@ -4,7 +4,8 @@ One line per loop: what you asked the agent, what happened, and what you changed
 
 | # | Prompt (short) | What happened | What we changed |
 |---:|---|---|---|
-| 1 | | | |
+| 1 | Write one line per loop in LOOP_LOG.md | Checked the brief and log; started recording loops. | Added this entry and recorded the logging rule in APP_BRIEF.md. |
+| 2 | Make it possible to search and filter | Added company/role search, a stage filter, matching counts, and Clear filters; build verification was blocked by sandbox process permissions and the retry was declined. | Updated the brief to include search and filtering; kept existing card actions. |
 
 ## For the Presentation
 

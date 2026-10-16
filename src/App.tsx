@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { COLUMNS, type Card } from './board.ts'
-import Column from './Column.tsx'
+import SearchableBoard from './SearchableBoard.tsx'
 
 export default function App() {
   const [cards, setCards] = useState<Card[]>([])
@@ -69,17 +69,7 @@ export default function App() {
           {error}
         </p>
       )}
-      <div className="board">
-        {COLUMNS.map((name) => (
-          <Column
-            key={name}
-            name={name}
-            cards={cards.filter((card) => card.column === name)}
-            onMove={moveCard}
-            onDelete={deleteCard}
-          />
-        ))}
-      </div>
+      <SearchableBoard cards={cards} onMove={moveCard} onDelete={deleteCard} />
     </main>
   )
 }
