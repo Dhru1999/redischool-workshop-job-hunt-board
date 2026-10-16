@@ -1,14 +1,15 @@
 import { useState } from 'react'
-import { COLUMNS, type Card } from './board.ts'
+import { COLUMNS, type Card, type ColumnName } from './board.ts'
 import Column from './Column.tsx'
 
 type BoardProps = {
   cards: Card[]
   onMove: (id: number, step: -1 | 1) => void
+  onDrop: (id: number, column: ColumnName) => void
   onDelete: (id: number) => void
 }
 
-export default function SearchableBoard({ cards, onMove, onDelete }: BoardProps) {
+export default function SearchableBoard({ cards, onMove, onDrop, onDelete }: BoardProps) {
   const [search, setSearch] = useState('')
   const [stage, setStage] = useState('All')
   const query = search.trim().toLowerCase()
@@ -46,7 +47,7 @@ export default function SearchableBoard({ cards, onMove, onDelete }: BoardProps)
         {COLUMNS.filter((name) => stage === 'All' || name === stage).map((name) => (
           <Column key={name} name={name}
             cards={visibleCards.filter((card) => card.column === name)}
-            onMove={onMove} onDelete={onDelete} />
+            onMove={onMove} onDrop={onDrop} onDelete={onDelete} />
         ))}
       </div>
     </>

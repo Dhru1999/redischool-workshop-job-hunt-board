@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { COLUMNS, type Card } from './board.ts'
+import { COLUMNS, type Card, type ColumnName } from './board.ts'
 import SearchableBoard from './SearchableBoard.tsx'
 
 export default function App() {
@@ -38,6 +38,10 @@ export default function App() {
     )
   }
 
+  function dropCard(id: number, column: ColumnName) {
+    setCards(cards.map((card) => (card.id === id ? { ...card, column } : card)))
+  }
+
   function deleteCard(id: number) {
     setCards(cards.filter((card) => card.id !== id))
   }
@@ -69,7 +73,7 @@ export default function App() {
           {error}
         </p>
       )}
-      <SearchableBoard cards={cards} onMove={moveCard} onDelete={deleteCard} />
+      <SearchableBoard cards={cards} onMove={moveCard} onDrop={dropCard} onDelete={deleteCard} />
     </main>
   )
 }
