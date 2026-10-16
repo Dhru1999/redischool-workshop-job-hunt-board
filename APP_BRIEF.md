@@ -21,6 +21,7 @@ The user adds an application card with company and role, moves it through the co
 2. Move a card to the next or previous column.
 3. Delete a card.
 4. Search applications by company or role and filter by stage; combine both controls and clear them.
+5. When a card moves into Offer via a button or drag and drop, show "Congratulations!!!" with confetti for 3.5 seconds. Respect reduced-motion preferences; do not celebrate saved offers on reload.
 
 ## Additional rules
 

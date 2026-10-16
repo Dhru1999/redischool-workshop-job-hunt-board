@@ -5,6 +5,50 @@ body {
   color: #222;
 }
 
+.offer-celebration {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+}
+
+.celebration-message {
+  padding: 1.5rem 2rem;
+  margin: 1rem;
+  background: #fff4cc;
+  color: #654500;
+  border: 3px solid #916400;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px #0003;
+  font-size: clamp(1.25rem, 5vw, 2.5rem);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.confetti {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.confetti span {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 16px;
+  animation: confetti-fall 2.8s ease-in forwards;
+}
+
+@keyframes confetti-fall {
+  to { transform: translate(var(--drift), 105vh) rotate(720deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confetti { display: none; }
+}
+
 .add-form,
 .board-filters {
   display: flex;

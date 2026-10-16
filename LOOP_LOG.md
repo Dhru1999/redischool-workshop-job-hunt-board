@@ -11,6 +11,8 @@ One line per loop: what you asked the agent, what happened, and what you changed
 
 | 4 | Suche soll andere Karten sichtbar lassen | Suche hebt Treffer hervor und zeigt ihre Anzahl, ohne andere Karten auszublenden. | Alle Karten bleiben bei der Suche in ihren Spalten; der Stage-Filter bleibt separat nutzbar. |
 
+| 5 | Congratulations-Pop-up mit Konfetti bei Offer | Beim Wechsel zu Offer erscheint die Nachricht fuer 3,5 Sekunden, per Button und Drag-and-drop. | Konfetti ohne neue Abhaengigkeiten hinzugefuegt; reduzierte Bewegung wird respektiert. |
+
 ## For the Presentation
 
 Each group has about five minutes. Use the log to answer:

@@ -2,9 +2,17 @@ import { useEffect, useState } from 'react'
 import { COLUMNS, loadCards, saveCards, type Card, type ColumnName } from './board.ts'
 import AddForm from './AddForm.tsx'
 import SearchableBoard from './SearchableBoard.tsx'
+import OfferCelebration from './OfferCelebration.tsx'
 
 export default function App() {
   const [cards, setCards] = useState<Card[]>(loadCards)
+  const [celebration, setCelebration] = useState(0)
+
+  useEffect(() => {
+    if (!celebration) return
+    const timer = window.setTimeout(() => setCelebration(0), 3500)
+    return () => window.clearTimeout(timer)
+  }, [celebration])
 
   // Save to this browser whenever the cards change, so they survive a reload.
   useEffect(() => {
@@ -19,14 +27,10 @@ export default function App() {
   }
 
   function moveCard(id: number, step: -1 | 1) {
-    setCards((current) =>
-      current.map((card) => {
-        if (card.id !== id) return card
-        const newIndex = COLUMNS.indexOf(card.column) + step
-        if (newIndex < 0 || newIndex >= COLUMNS.length) return card
-        return { ...card, column: COLUMNS[newIndex] }
-      }),
-    )
+    const card = cards.find((item) => item.id === id)
+    if (!card) return
+    const column = COLUMNS[COLUMNS.indexOf(card.column) + step]
+    if (column) updateCard(id, { column })
   }
 
   function dropCard(id: number, column: ColumnName) {
@@ -34,6 +38,10 @@ export default function App() {
   }
 
   function updateCard(id: number, changes: Partial<Card>) {
+    const card = cards.find((item) => item.id === id)
+    if (card && card.column !== 'Offer' && changes.column === 'Offer') {
+      setCelebration(Date.now())
+    }
     setCards((current) => current.map((card) => (card.id === id ? { ...card, ...changes } : card)))
   }
 
@@ -44,6 +52,7 @@ export default function App() {
   return (
     <main>
       <h1>Job Hunt Board</h1>
+      {celebration > 0 && <OfferCelebration key={celebration} />}
       <AddForm onAdd={addCard} />
       <SearchableBoard
         cards={cards}
